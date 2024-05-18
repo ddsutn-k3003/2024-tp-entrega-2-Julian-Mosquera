@@ -33,7 +33,7 @@ public class WebApp {
         Fachada fachada = new Fachada();
         ObjectMapper objectMapper = createObjectMapper();
         fachada.setViandasProxy(new ViandasProxy(objectMapper));
-        MockApp.mockServer();
+        //MockApp.mockServer();
 
         app.get("/rutas", new ListaRutasController(fachada));
         app.get("/rutas/{rutaID}", new BuscarRutaXIDController(fachada));

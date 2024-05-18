@@ -16,6 +16,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Random;
 
 public class Fachada implements FachadaLogistica {
@@ -64,7 +65,6 @@ return rutaMapper.mapear(ruta);
         throw new TrasladoNoAsignableException("No se encontraron rutas posibles para el traslado");
     }
     Ruta ruta = rutasPosibles.get(random.nextInt(rutasPosibles.size()));
-
     Traslado traslado = new Traslado(viandaDTO.getCodigoQR(), EstadoTrasladoEnum.ASIGNADO, trasladoDTO.getFechaTraslado(), ruta);
     repositorioTraslado.guardar(traslado);
     return trasladoMapper.mapear(traslado);

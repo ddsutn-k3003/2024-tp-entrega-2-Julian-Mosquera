@@ -21,8 +21,9 @@ public class AgregarRutasController implements Handler {
     @Override
     public void handle(@NotNull Context context) throws Exception {
         RutaDTO rutaDTO = context.bodyAsClass(RutaDTO.class);
-        fachada.agregar(rutaDTO);
+        var rutaDTOrta = fachada.agregar(rutaDTO);
+        context.json(rutaDTOrta);
         context.status(HttpStatus.CREATED);
-        context.result("Ruta agregada correctamente");
+
     }
 }
